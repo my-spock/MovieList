@@ -23,7 +23,7 @@ namespace MovieList.Controllers
         public IActionResult Add()
         {
             ViewBag.Action = "Add";
-            //ViewBag.Genres = _context.Genres.OrderBy(g => g.Name).ToList();
+            ViewBag.Genres = _context.Genres.OrderBy(g => g.Name).ToList();
             return View("Edit", new Movie());
         }
 
@@ -32,7 +32,7 @@ namespace MovieList.Controllers
         public IActionResult Edit(int id)
         {
             ViewBag.Action = "Edit";
-            //ViewBag.Genres = _context.Genres.OrderBy(g => g.Name).ToList();
+            ViewBag.Genres = _context.Genres.OrderBy(g => g.Name).ToList();
             var movie = _context.Movies.Find(id);
             return View(movie);
         }
@@ -54,7 +54,7 @@ namespace MovieList.Controllers
             else
             {
                 ViewBag.Action = (movie.MovieId == 0) ? "Add" : "Edit";
-                //ViewBag.Genres = _context.Genres.OrderBy(g => g.Name).ToList();
+                ViewBag.Genres = _context.Genres.OrderBy(g => g.Name).ToList();
                 return View(movie);
             }
         }

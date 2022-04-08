@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MovieList.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace MovieList.Controllers
 {
@@ -22,7 +23,9 @@ namespace MovieList.Controllers
 
         public IActionResult Index()
         {
-            var movies = context.Movies.OrderBy(m => m.Name).ToList();
+            var movies = context.Movies
+                .Include(m => m.Genre)
+                .OrderBy(m => m.Name).ToList();
             return View(movies);
         }
     }

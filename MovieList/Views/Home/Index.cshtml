@@ -10,6 +10,7 @@
         <tr>
             <th>Name</th>
             <th>Year</th>
+            <th>Genre</th>
             <th>Rating</th>
             <th></th>
         </tr>
@@ -17,15 +18,16 @@
     <tbody>
         @foreach (var movie in Model)
         {
-            <tr>
-                <td>@movie.Name</td>
-                <td>@movie.Year</td>
-                <td>@movie.Rating</td>
-                <td>
-                    <a asp-controller="Movie" asp-action="Edit" asp-route-id="@movie.MovieId" asp-route-slug="@movie.Slug">Edit</a>
-                    <a asp-controller="Movie" asp-action="Delete" asp-route-id="@movie.MovieId" asp-route-slug="@movie.Slug">Delete</a>
-                </td>
-            </tr>
+        <tr>
+            <td>@movie.Name</td>
+            <td>@movie.Year</td>
+            <td>@movie.Genre.Name</td>
+            <td>@movie.Rating</td>
+            <td>
+                <a asp-controller="Movie" asp-action="Edit" asp-route-id="@movie.MovieId" asp-route-slug="@movie.Slug">Edit</a>
+                <a asp-controller="Movie" asp-action="Delete" asp-route-id="@movie.MovieId" asp-route-slug="@movie.Slug">Delete</a>
+            </td>
+        </tr>
         }
     </tbody>
 </table>
