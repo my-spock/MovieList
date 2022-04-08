@@ -55,7 +55,7 @@ namespace MovieList.Controllers
             {
                 ViewBag.Action = (movie.MovieId == 0) ? "Add" : "Edit";
                 ViewBag.Genres = _context.Genres.OrderBy(g => g.Name).ToList();
-                return View(movie);
+                return View("Edit", movie);
             }
         }
 
@@ -64,6 +64,8 @@ namespace MovieList.Controllers
         public IActionResult Delete(int id)
         {
             var movie = _context.Movies.Find(id);
+            var genre = _context.Genres.Find(movie.GenreId);
+            movie.Genre = genre;
             return View(movie);
         }
 
